@@ -1,25 +1,16 @@
 package main
 
-import "fmt"
-
-var test int
-
 func main() {
 
-	test = 9
-
-	otherCard := "Saraza"
-
-	var cards = []string{initialCard(), otherCard}
+	var cards = newDeck()
 	cards = append(cards, "other thing")
-	cards = append(cards, "missing java :(")
-	fmt.Println(cards)
+	cards = append(cards, "missing java :( ")
+	cards.print()
 
-	for _, card := range cards {
-		fmt.Println(card)
-	}
-}
+	deal, rest := cards.deal(3)
 
-func initialCard() string {
-	return "Ace of Diamond"
+	println("Deal: ")
+	deal.print()
+	println("Rest: ")
+	rest.print()
 }
