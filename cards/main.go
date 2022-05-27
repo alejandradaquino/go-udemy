@@ -13,4 +13,6 @@ func main() {
 	deal.print()
 	println("Rest: ")
 	rest.print()
+	println(cards.toString())
+	cards.save()
 }
