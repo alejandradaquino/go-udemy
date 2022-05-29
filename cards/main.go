@@ -14,5 +14,11 @@ func main() {
 	println("Rest: ")
 	rest.print()
 	println(cards.toString())
-	cards.save()
+	cards.save("deck.txt")
+	retrieved := newDeckFromFile("deck.txt")
+	println(" \nretrieved: \n")
+	retrieved.print()
+	cards.shuffle()
+	println(" \nShuffled:  \n")
+	cards.print()
 }
