@@ -2,7 +2,19 @@ package main
 
 import "fmt"
 
-type person struct {
+type person interface {
+	getFirstName() string
+	getLastName() string
+	getContactInfo() contactInfo
+}
+
+type employee struct {
+	firstName string
+	lastName  string
+	contactInfo
+}
+
+type owner struct {
 	firstName string
 	lastName  string
 	contactInfo
@@ -13,11 +25,20 @@ type contactInfo struct {
 	zipCode int
 }
 
-func (p person) print() {
+func (p employee) print() {
 
 	fmt.Printf("%+v", p)
 }
 
-func (p *person) setFirstName(name string) {
+func (p *employee) setFirstName(name string) {
+	(*p).firstName = name
+}
+
+func (p owner) print() {
+
+	fmt.Printf("%+v", p)
+}
+
+func (p *owner) setFirstName(name string) {
 	(*p).firstName = name
 }

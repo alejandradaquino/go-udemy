@@ -3,10 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	alex := person{"Alex", "Anderson", contactInfo{"email", 12}}
+	alex := employee{"Alex", "Anderson", contactInfo{"email", 12}}
 	println(alex.firstName)
 
-	ale := person{
+	ale := owner{
 		firstName: "Ale",
 		lastName:  "Juarez",
 		contactInfo: contactInfo{"email",
@@ -16,7 +16,7 @@ func main() {
 	ale.setFirstName("Alejandra")
 	//ale.print()
 
-	var juan person
+	var juan employee
 	juan.setFirstName("bla")
 	//default empty strings
 	//println(juan.firstName + " " + juan.lastName)
