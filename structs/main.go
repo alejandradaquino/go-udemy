@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
 
@@ -12,5 +15,23 @@ func main() {
 		"http://golang.org",
 	}
 
-	fmt.Println(links)
+	c := make(chan string)
+
+	for _, link := range links {
+
+		go checkLink(link, c)
+	}
+	for range links {
+		fmt.Println(<-c)
+	}
+
+}
+
+func checkLink(link string, c chan string) {
+	_, err := http.Get(link)
+	if err != nil {
+		c <- link + " might be down!"
+		return
+	}
+	c <- link + " is up!"
 }
