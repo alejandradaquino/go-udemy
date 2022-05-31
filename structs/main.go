@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -19,4 +20,7 @@ func main() {
 	fmt.Println(string(b))
 	fmt.Print(n)
 
+	resp2, _ := http.Get("http://www.google.com")
+
+	io.Copy(os.Stdout, resp2.Body)
 }
