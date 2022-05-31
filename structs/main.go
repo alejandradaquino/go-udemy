@@ -8,9 +8,15 @@ import (
 
 func main() {
 	resp, err := http.Get("http://www.google.com")
-	fmt.Println(resp)
+	//fmt.Println(resp)
 	if err != nil {
-		fmt.Errorf("Error", err)
+		fmt.Println(err)
 		os.Exit(1)
 	}
+	b := make([]byte, 999999)
+	n, _ := resp.Body.Read(b)
+
+	fmt.Println(string(b))
+	fmt.Print(n)
+
 }
