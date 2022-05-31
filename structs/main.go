@@ -22,5 +22,5 @@ func main() {
 
 	resp2, _ := http.Get("http://www.google.com")
 
-	io.Copy(os.Stdout, resp2.Body)
+	io.Copy(logWritter{}, resp2.Body)
 }
