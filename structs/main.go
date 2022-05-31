@@ -3,8 +3,14 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
-	fmt.Println(http.Get("http://www.google.com"))
+	resp, err := http.Get("http://www.google.com")
+	fmt.Println(resp)
+	if err != nil {
+		fmt.Errorf("Error", err)
+		os.Exit(1)
+	}
 }
